@@ -48,6 +48,19 @@ def update_user(user_id: int, user_update: UserUpdate, db: Session = Depends
     return db_user
 
 @router.delete("/users/{user_id}", response_model=UserResponse)
+def soft_delete_user(user_id: int, db: Session = Depends(get_db)):
+    db_user = db.query(User).filter(User.id == user_id).first()
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+    
+    # Marcamos como inactivo en lugar de borrar la fila
+    db_user.is_active = False
+    
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+@router.delete("/users/{user_id}", response_model=UserResponse)
 def delete_user(user_id: int, db: Session = Depends(get_db)):
     db_user = db.query(User).filter(User.id == user_id).first()
     if db_user is None:
@@ -56,3 +69,4 @@ def delete_user(user_id: int, db: Session = Depends(get_db)):
     db.delete(db_user)
     db.commit()
     return db_user
+

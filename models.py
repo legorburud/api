@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 from pydantic import BaseModel
 from database import Base
@@ -12,3 +12,5 @@ class User(Base):
     edad = Column(Integer, index=True)
     region = Column(String(100), index=True)
     email = Column(String(30), unique=True, index=True)
+
+    is_active = Column(Boolean, default=True, nullable=False)

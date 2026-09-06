@@ -19,3 +19,6 @@ __pycache__/
 # Carpetas de configuración del editor (VS Code, PyCharm)
 .vscode/
 .idea/
+
+# Ignorar la carpeta routers en esta versión
+Routers/
