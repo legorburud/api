@@ -1,0 +1,21 @@
+# Entornos virtuales
+venv/
+.venv/
+env/
+
+# Variables de entorno y credenciales sensibles (¡NUNCA subir!)
+.env
+
+# Archivo de base de datos local (SQLite)
+*.db
+*.sqlite
+*.sqlite3
+
+# Archivos temporales y cachés de Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Carpetas de configuración del editor (VS Code, PyCharm)
+.vscode/
+.idea/
