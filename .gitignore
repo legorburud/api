@@ -20,5 +20,6 @@ __pycache__/
 .vscode/
 .idea/
 
-# Ignorar la carpeta routers en esta versión
-Routers/
+#archivos a ignora
+controlls.py
+database.py
